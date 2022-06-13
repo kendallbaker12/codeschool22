@@ -1,0 +1,42 @@
+body {
+    background-color: #222;
+}
+
+body #app #eight-ball {
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    border-radius: 100%;
+    background-color: black;
+}
+
+body #app #eight-ball #message-area {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin-top: 175px;
+    color: white;
+    margin-left: 100px;
+    text-align: center;
+    width: 0;
+    height: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 120px solid purple;
+
+}
+
+body #app #eight-ball #message-area #message {
+    margin-top: -100px;
+    margin-left: -5px;
+
+}
+
+body #app #question-area {
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    padding: 1rem;
+    border-radius: 10px;
+}

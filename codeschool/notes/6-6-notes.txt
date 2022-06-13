@@ -1,0 +1,12 @@
+dynamic/interactive
+
+functional
+
+closure is all about scoping variables accesed within a loop retain their indivdual 
+scoping from the outer loop.
+
+
+when creating an element 
+create element
+find parent
+merge them together.

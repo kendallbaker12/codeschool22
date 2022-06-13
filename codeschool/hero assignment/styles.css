@@ -1,0 +1,12 @@
+.hero{
+    background-image: url(https://cdn.pixabay.com/photo/2022/05/18/10/27/sea-7204955_1280.jpg);
+    height: 450px;
+    width: 100%;
+    max-width: 1200px;
+    background-size:cover;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}

@@ -1,0 +1,14 @@
+ajax
+fetch
+asynchrounous
+json
+
+javascript object notation
+
+ajax is a technology we use to request data from external apis. and its important to 
+web applications are able to make quick, incremental updates to the user interface without reloading the entire browser page. 
+This makes the application faster and more responsive to user actions
+
+
+serialization and deserialization. and parsing.
+moment js for time keeping in javascript.

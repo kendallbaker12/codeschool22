@@ -1,0 +1,99 @@
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+}
+
+#guesses {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.guess {
+    display: flex;
+    flex-direction: row;
+}
+
+.letter {
+    border: 5px outset black;
+    background: linear-gradient(135deg, #FFF5C3 10%, #9452A5 100%);
+    cursor: pointer;
+    font-size: 65px;
+    height: 100px;
+    line-height: 100px;
+    margin: 2px;
+    text-align: center;
+    width: 100px;
+    border-radius: 50%;
+    box-shadow: 3px 3px 3px 3px rgb(0 0 10 / 20%);
+}
+
+.letter.match {
+    border: 5px outset black;
+    background: green;
+    cursor: pointer;
+    font-size: 65px;
+    height: 100px;
+    line-height: 100px;
+    margin: 2px;
+    text-align: center;
+    width: 100px;
+}
+
+.letter.contains {
+    border: 5px outset black;
+    background: yellow;
+    cursor: pointer;
+    font-size: 65px;
+    height: 100px;
+    line-height: 100px;
+    margin: 2px;
+    text-align: center;
+    width: 100px;
+}
+
+.letter:hover {
+    background-image: linear-gradient(135deg, #9452A5 10%, #FFF5C3 100%);
+}
+
+#input-div {
+    display: flex;
+    justify-content: center;
+}
+
+#wrong-message {
+    display: flex;
+    justify-content: center;
+}
+
+#keyboard-cont {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#keyboard-cont div {
+    display: flex;
+}
+
+.second-row {
+    margin: 0.5rem 0;
+}
+
+.keyboard-button {
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.5rem;
+    margin: 0 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 50%;
+}

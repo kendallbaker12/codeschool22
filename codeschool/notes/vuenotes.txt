@@ -1,0 +1,22 @@
+Vue
+
+Directives
+------------------------------
+v-if="variable"
+    does the same thing as v-show*
+    display an element if true.
+v-else
+    the other side of the if statement
+v-show="variable"
+    display an element if true
+        v-else doesnt work with this
+v-on:click="foobar"
+    when clicked,"foobar" happens
+    :click,:mousedown,:mouseover,:keydown,
+v-for="item in items"
+    creates an instance of all inner html for each item within the items array
+v-bind:style="{color: '#fff'}"
+    turns all the text within the element white.
+v-model="question"
+    binds question variable and input value together
+    goes both ways.

@@ -1,0 +1,35 @@
+:root{
+    --cell-size: 100px;
+    --color: #b8860b;
+    --color-set:#0000ff;
+    --l: 10px;
+}
+body {
+	margin: 0;
+}
+
+#board {
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	justify-content: center;
+	align-content: center;
+	justify-items: center;
+	align-items: center;
+	grid-template-columns: repeat(3, auto)
+}
+.cells {
+	width: var(--cell-size);
+	height: var(--cell-size);
+	border: 1px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	cursor: pointer;
+}
+.winning-message{
+    display: none;
+    padding-left: 50%;
+
+}

@@ -1,0 +1,20 @@
+think inside the box.
+
+unsplash,pexels,pixabay are free photos that i can use for projects.
+
+the difference between width and max width is max is dynamic.
+
+css layout
+static
+relative
+fixed
+absolute
+sticky
+
+flex
+1.horizontal stacking
+2.justify/align
+3.spacing
+4.super responsive
+
+grid garden and flex froggy are good css tools.

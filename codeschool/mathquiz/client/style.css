@@ -1,0 +1,31 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+    background-color: black;
+    color: white;
+}
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#answer-input{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 50px;
+}
+#numbers{
+    display: flex;
+    justify-content: center;
+}
+#answer-button{
+    display: flex;
+    justify-content: center;
+    margin:  0 auto;
+}
+#correct-answer{
+    display: flex;
+    justify-content: center;
+    margin:  0 auto;
+}
