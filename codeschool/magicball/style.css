@@ -8,6 +8,9 @@ body #app #eight-ball {
     margin: auto;
     border-radius: 100%;
     background-color: black;
+    animation-duration: 2s;
+    animation-direction: reverse;
+    animation-name: bounce;
 }
 
 body #app #eight-ball #message-area {
@@ -24,11 +27,31 @@ body #app #eight-ball #message-area {
     border-right: 150px solid transparent;
     border-top: 120px solid purple;
 
+
+}
+
+@keyframes bounce {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+
+    to {
+        margin-left: 100%;
+        width: 100%;
+    }
 }
 
 body #app #eight-ball #message-area #message {
     margin-top: -100px;
-    margin-left: -5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px;
+    margin-left: -40px;
+    width: fit-content;
+    height: fit-content;
+    transition: 1s;
 
 }
 

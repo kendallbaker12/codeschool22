@@ -7,13 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magic Eight Ball</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 
 <body>
     <div id="app">
         <div id="eight-ball">
             <div id="message-area">
-                <div id="message">{{message}}</div>
+                <div id="message" v-bind:style="{color : messageColor}">{{message}}</div>
             </div>
         </div>
         <div id="question-area">
