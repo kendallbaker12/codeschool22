@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Todo App</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Todo App</h1>
+        <div id="input-area">
+            Name: <input placeholder="Name" v-model="nameInput">
+            Description: <input placeholder="Description" v-model="descInput">
+            Done: <input type="checkbox" v-model="doneInput">
+            Date: <input type="date" v-model="dateInput">
+            Tags: <div v-for="tag in usableTags">
+                {{tag}}: <input type="checkbox" v-model="tagsInput[tag]">
+            </div>
+            <button v-on:click="addTodo()">Add Todo</button>
+        </div>
+        <div id="list-area">
+            <div class="todo" v-for="todo in todos">
+                Name: {{todo.name}}<br>
+                Description: {{todo.description}}<br>
+                Done: {{todo.done}}<br>
+                Deadline: {{todo.deadline}}<br>
+                Tags: {{todo.tags}}<br>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
