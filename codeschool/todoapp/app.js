@@ -5,14 +5,24 @@ var app = new Vue({
     data: {
         todos: [],
         usableTags: [],
+
+        // create variables for input
         nameInput: "",
         descInput: "",
         doneInput: false,
         dateInput: "",
         tagsInput: {},
+
+        newTodoId: "",
+
+        editingIndex: -1,
+        // copy of todo for editing
+        editingTodoCopy: {},
+        editingTags: [], // ex. [true, false, false, true, ...]
     },
     methods: {
         addTodo: function () {
+            // 1. get list of tags checked
             let tagsList = [];
             this.usableTags.forEach(tag => {
                 if (this.tagsInput[tag]) {
@@ -20,6 +30,7 @@ var app = new Vue({
                 }
             });
 
+            // 2. create new todo with input variables
             let newTodo = {
                 name: this.nameInput,
                 description: this.descInput,
@@ -27,12 +38,40 @@ var app = new Vue({
                 deadline: this.dateInput,
                 tags: tagsList,
             }
-            this.todos.push(newTodo);
 
+            // 3. post it to the server
+            this.postTodo(newTodo);
+
+            // 4. clear inputs
+            this.nameInput = "";
+            this.descInput = "";
+            this.doneInput = false;
+            this.dateInput = "";
+            this.resetTagInputs();
         },
-        postTodo: function (new_todo) {
-            let newTodo = [];
+        resetTagInputs: function () {
+            this.tagsInput = {};
+        },
 
+        editTodo: function (todo_object, todo_index) {
+            this.editingIndex = todo_index;
+            // get a copy of the todo
+            this.editingTodoCopy = { ...todo_object };
+
+            // does the todo_object have .tags?
+            if (Object.keys(todo_object).includes('tags')) {
+                // get the list of tags already checked []
+                this.editingTags = [];
+                this.usableTags.forEach(tag => {
+                    this.editingTags.push(todo_object.tags.includes(tag));
+                });
+            }
+        },
+
+        // ============== FETCH FUNCTIONS ==============
+
+        // POST todo
+        postTodo: function (new_todo) {
             fetch(url + "/todo", {
                 method: "POST",
                 body: JSON.stringify(new_todo),
@@ -40,23 +79,82 @@ var app = new Vue({
                     "Content-Type": "application/json"
                 }
             }).then(response => {
-                response.json().then((created_todo) =>
-                    console.log(created_todo));
+                response.json().then((created_todo) => {
+                    // created_todo._id -> newly posted todo
+                    this.newTodoId = created_todo._id;
+                    this.getTodos();
+                });
+            });
+        },
+
+        // GET todos
+        getTodos: function () {
+            fetch(url + "/todos").then((response) => {
+                response.json().then((data) => {
+                    this.todos = data;
+
+                    // removes the T00:00:000Z from the deadline
+                    this.todos.forEach((todo) => {
+                        todo.deadline = todo.deadline.split("T")[0];
+                    })
+
+                });
+            });
+        },
+
+        // PUT todo
+        putTodo: function (todo_object) {
+            // Get list of tag strings
+            let listOfTags = [];
+            this.usableTags.forEach((tag, index) => {
+                if (this.editingTags[index]) {
+                    listOfTags.push(tag);
+                }
+            });
+
+            // update todoCopy.tags to list of strings
+            //      ex. ["school", "home", ...]
+            this.editingTodoCopy.tags = [...listOfTags];
+
+            // PUT request
+            fetch(url + "/todo/" + todo_object._id, {
+                method: "PUT",
+                body: JSON.stringify(this.editingTodoCopy),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(response => {
+                response.json().then((updated_todo) => {
+                    // created_todo._id -> newly posted todo
+                    this.newTodoId = updated_todo._id;
+                    this.getTodos();
+                });
+            });
+
+            // clear editingTodo
+            this.editTodo({}, -1);
+        },
+
+        // DELETE todo
+        deleteTodo: function (todo_object) {
+            fetch(url + "/todo/" + todo_object._id, {
+                method: "DELETE",
+            }).then(response => {
+                response.json().then(deleted_todo => {
+                    console.log(deleted_todo);
+                    this.getTodos();
+                });
             });
         }
+
     },
     created: function () {
-        fetch(url + "/todos").then((response) => {
-            response.json().then((data) => {
-                this.todos = data;
-            });
-        });
+        this.getTodos();
+
         fetch(url + "/tags").then((response) => {
             response.json().then((data) => {
                 this.usableTags = data;
-                this.usableTags.forEach(tag => {
-                    this.tagsInput[tag] = false;
-                });
+                this.resetTagInputs();
             });
         });
     }

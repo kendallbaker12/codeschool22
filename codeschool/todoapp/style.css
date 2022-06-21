@@ -44,7 +44,7 @@
 
 body {
     box-sizing: border-box;
-    font-family: Fresca;
+    font-family: 'Lobster';
 }
 
 body #app {
@@ -68,6 +68,10 @@ body #app #input-area .tag-area {
     display: inline;
 }
 
+body #app #input-area .tag-area input {
+    margin-left: 1rem;
+}
+
 body #app #list-area {
     height: 45vh;
     margin: 1rem;
@@ -84,6 +88,11 @@ body #app #list-area .todo {
     background-color: rgb(199, 255, 190);
     height: fit-content;
     transition: .5s;
+}
+
+body #app #list-area .new-todo {
+    border-left: 8px solid rgb(159, 56, 159);
+    background-color: rgb(193, 101, 193);
 }
 
 body #app #list-area .todo .todo-name {
@@ -125,4 +134,8 @@ body #app #list-area .todo .button-area button {
 
 body #app .todo input {
     margin: 0rem;
+}
+
+.strikethrough {
+    text-decoration: line-through;
 }
